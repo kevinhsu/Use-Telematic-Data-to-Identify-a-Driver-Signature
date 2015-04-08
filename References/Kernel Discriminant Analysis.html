@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0064)http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   
+   <meta name="description" content="Kernel Discriminant Analysis">
+   <meta name="keywords" content="kda">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="Generator" content="LaTeX2HTML v2K.1beta">
+   <meta name="GENERATOR" content="Mozilla/4.75 [en] (X11; U; Linux 2.4.0 i586) [Netscape]">
+   <title>Kernel Discriminant Analysis</title>
+<style type="text/css"></style></head>
+<body>
+&nbsp;
+<center>
+<h1>
+Kernel Discriminant Analysis</h1></center>
+
+<center><b><a href="http://www.dcs.qmul.ac.uk/~yongmin/">Yongmin Li</a>,
+<a href="http://www.dcs.qmul.ac.uk/~sgg/">Shaogang
+Gong</a> and <a href="mailto:heather@dcs.qmul.ac.uk">Heather Liddell</a></b>
+<br><b>Department of Computer Science</b>
+<br><b>Queen Mary, University of London</b>
+</center>
+
+<h3>
+1. Introduction</h3> For most pattern recognition problems, selecting
+an appropriate representation to extract the most significant features
+is crucially important.  Principal Component Analysis (PCA) [<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Sirovich-Kirby:87">8</a>,<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Turk-Pentland:91">10</a>] has been widely adopted to
+extract abstract features and to reduce dimensionality in many pattern
+recognition problems. But the features extracted by PCA are actually
+"global" features for all pattern classes, thus they are not
+necessarily much representative for discriminating one class from
+others. Linear Discriminant Analysis (LDA) [<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Fisher:38">2</a>,<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Fukunaga:72">3</a>,<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Swets-Weng:96">9</a>], which seeks to find a linear
+transformation by maximising the between-class variance and minimising
+the within-class variance, has proved to be a suitable technique for
+discriminating different pattern classes. However, both the PCA and
+LDA are linear techniques which may be less efficient when severe
+non-linearity is involved.  To extract the non-linear principal
+components, Kernel PCA (KPCA) [<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Scholkopf-etc:97a">7</a>] was developed using the
+popular kernel technique [<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Vapnik:95">11</a>,<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Vapnik:98">12</a>]. However, similar to the linear
+PCA, KPCA captures the overall variance of all patterns which are not
+necessary significant for discriminant purpose.  <p>To extract the
+nonlinear discriminant features, Kernel Discriminant Analysis (KDA)
+[<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Mika-etc:99">6</a>,<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Baudat-Anouar:00">1</a>,<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Li-etc:01b">4</a>], a nonlinear discriminating method
+based on kernel techniques [<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Vapnik:95">11</a>,<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html#Vapnik:98">12</a>], was developed.
+
+</p><h3>
+2. Kernel Discriminant Analysis</h3> The principle of KDA can be
+illustrated in  <a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/index.html#kda:fig:kda">Figure 1</a>.  Owing
+to the severe non-linearity, it is difficult to directly compute the
+discriminating features between the two classes of patterns in the
+original input space (left). By defining a non-linear mapping from the
+input space to a high-dimensional feature space (right), we (<b>expect
+to</b>) obtain a linearly separable distribution in the feature
+space. Then LDA, the linear technique, can be performed in the feature
+space to extract the most significant discriminating
+features. However, the computation may be problematic or even
+impossible in the feature space owing to the high dimensionality. By
+introducing a kernel function which corresponds to the non-linear
+mapping, all the computation can conveniently be carried out in the
+input space. The problem can be finally solved as an
+eigen-decomposition problem like PCA, LDA and KPCA.  <center><a name="kda:fig:kda"></a><a name="21"></a></center>
+
+<center><table>
+<tbody><tr>
+<td>
+<center><img src="./Kernel Discriminant Analysis_files/kda.gif" border="0" width="640" align="BOTTOM"></center>
+</td>
+</tr>
+
+</tbody><caption align="BOTTOM"><b>Figure 1:</b> Kernel Discriminant Analysis.</caption>
+</table></center>
+
+<h3>
+3. A Toy Problem</h3> We use a toy problem to illustrate the
+characteristics of KDA as shown in <a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/index.html#kda:fig:example">Figure 2</a>. Two classes of patterns
+denoted by circles and crosses respectively have a significant
+non-linear distribution. To make the results comparable among
+different representations (PCA, LDA, KPCA and KDA), we try to separate
+them with a <b>one dimensional</b> feature, i.e. the most significant
+mode of PCA, LDA, KPCA or KDA. The first row shows the patterns and
+the discriminating boundaries computed by each of the four different
+methods. The second row illustrates the intensity of the
+one-dimensional features given by PCA, LDA, KPCA and KDA on the region
+covered by the training patterns.  <center><a name="kda:fig:example"></a><a name="30"></a></center>
+
+<center><table>
+<tbody><tr>
+<td>
+<center><img src="./Kernel Discriminant Analysis_files/toy.gif" border="0" width="640" align="BOTTOM"></center>
+</td>
+</tr>
+
+</tbody><caption align="BOTTOM"><b>Figure 2:</b> Solving a nonlinear
+classification problem with, from left to right, PCA, LDA, KPCA and
+KDA. The first row shows the patterns and the discriminating
+boundaries computed by each of the four methods. The second row
+illustrates the intensity of the computed one-dimensional features on
+the region covered by the training patterns.&nbsp;</caption>
+</table></center> <a name="kda:sec:model"></a>
+
+<h3>
+4. Representing Multi-View Faces Using KDA</h3> 
+
+Face images with large pose variation demonstrate significant
+nonlinearity, which makes face recognition a challenging problem. To
+address this problem, we apply KDA to represent multi-view face
+patterns.
+
+<p>In the following example (<a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/index.html#kda:fig:facedistrib">Figure 3</a>), 540 multi-view
+face patterns from 12 subjects, 45 of each, were used to train
+KDA. For the sake of clarity, only the patterns of first four face
+classes are shown here. To compare the performance of KDA, we also
+applied PCA, LDA and KPCA to the same set of face patterns.
+</p><center><a name="kda:fig:facedistrib"></a><a name="41"></a></center>
+
+<center><table>
+<tbody><tr>
+<td>
+<center>
+<img src="./Kernel Discriminant Analysis_files/pcadist40.jpg" border="0" width="320" align="BOTTOM">
+<img src="./Kernel Discriminant Analysis_files/ldadist40.jpg" border="0" width="320" align="BOTTOM">
+<br>
+<img src="./Kernel Discriminant Analysis_files/kpcadist40.jpg" border="0" width="320" align="BOTTOM">
+<img src="./Kernel Discriminant Analysis_files/kdadist40.jpg" border="0" width="320" align="BOTTOM">
+</center>
+</td>
+</tr>
+</tbody><caption align="BOTTOM"><b>Figure 3:</b> Distribution of multi-view
+face patterns in PCA, LDA, KPCA and KDA spaces (only the first two
+dimensions).</caption> </table></center>
+
+<p>
+It is noted that
+</p><ol>
+<li>
+the pattern distributions using PCA and KPCA are not satisfactorily separable,
+or more precisely, the variation from different subjects is even overshadowed
+by that of other sources, since these two techniques are not designed for
+discriminating purpose;</li>
+
+<li>
+LDA performs better than PCA and KPCA, but not as good as KDA;</li>
+
+<li>
+KDA provides the best discriminating performance among the four
+methods.</li>
+</ol>
+
+<p><br>
+</p><hr><!--Table of Child-Links--><a name="CHILD_LINKS"></a>
+<ul>
+<li>
+<a name="tex2html6" href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html"></a><a name="tex2html6" href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html"></a><a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/LI1/kda/node1.html" name="tex2html6">Bibliography</a></li>
+</ul>
+<!--End of Table of Child-Links-->
+<hr>
+<address>
+<a href="http://www.dcs.qmul.ac.uk/~yongmin/">Yongmin Li</a> 2001-10-14</address>
+
+
+
+<iframe class="transover-tooltip" style="text-align: left; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px; position: fixed; border-radius: 5px; z-index: 2147483647; top: -1500px; display: none; background: rgb(252, 247, 217);"></iframe><iframe class="transover-tooltip" style="text-align: left; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px; position: fixed; border-radius: 5px; z-index: 2147483647; top: -1500px; display: none; background: rgb(252, 247, 217);"></iframe></body></html>

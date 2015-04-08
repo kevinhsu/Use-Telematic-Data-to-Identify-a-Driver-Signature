@@ -1,0 +1,197 @@
+/**
+ * @version    1.1
+ * @package    Corsa
+ * @author     WooRockets Team <support@woorockets.com>
+ * @copyright  Copyright (C) 2014 WooRockets.com. All Rights Reserved.
+ * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Websites: http://www.woorockets.com
+ * The stylesheet for display on mobile and tablets device
+ */
+
+@media only screen and (max-width: 1200px) {
+	#page {
+		max-width: 1020px;
+	}
+	.site-main {
+		width: 680px;
+		float: left;
+	}
+	.primary-sidebar,
+	.secondary-sidebar {
+		width: 250px;
+		float: left;
+	}
+	.content3col .site-main {
+		width: 450px;
+	}
+	.content3col .primary-sidebar,
+	.content3col .secondary-sidebar {
+		width: 225px;
+	}
+	.left-content-right .site-main {
+		margin-left: 255px;
+	}
+	.left-content-right .secondary-sidebar {
+		margin-left: -705px;
+	}
+}
+@media only screen and (max-width: 960px), (max-device-width: 960px) {
+	.header-bot {
+		margin: 0;
+		padding: 15px 20px 20px;
+	}
+	.site-description,
+	#menu-main > li > .sub-menu:before {
+		display: none;
+	}
+	.main-navigation .menu-toggle,
+	.main-navigation .menu-toggle i,
+	.main-navigation.active #menu-main li,
+	.main-navigation.active .menu-item-has-children .dashicons {
+		display: block;
+	}
+	.main-navigation .menu-toggle {
+		right: 25px;
+		top: 28px;
+		position: absolute;
+		line-height: inherit;
+		width: 20px;
+		text-align: center;
+	}
+	.main-navigation .menu-toggle i {
+		font-size: 25px;
+		position: absolute;
+		top: 6px;
+		right: 12px;
+	}
+	.main-navigation .menu {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 94px;
+	}
+	.main-navigation.active .menu {
+		opacity: 1;
+		visibility: visible;
+		background: #191919;
+		z-index: 999;
+		text-align: left;
+	}
+	.main-navigation #menu-main li,
+	.main-navigation #menu-main li .sub-menu li {
+		padding: 0;
+	}
+	.main-navigation #menu-main li a,
+	.main-navigation #menu-main li .sub-menu li a {
+		padding: 15px 20px;
+		background: none !important;
+		color: #fff;
+		font-weight: 300;
+	}
+	.main-navigation #menu-main li a,
+	.main-navigation #menu-main li .sub-menu li:last-child > a,
+	.main-navigation #menu-main li .sub-menu li a {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	.main-navigation #menu-main li .sub-menu {
+		border: 0;
+		width: 100%;
+		background: rgba(255, 255, 255, .04);
+		margin: 0;
+		top: 0 !important;
+		left: 0 !important;
+		-webkit-transition: none;
+		-moz-transition:    none;
+		transition:         none;
+		-webkit-transform: none;
+		-moz-transform:    none;
+		-ms-transform:     none;
+		-o-transform:      none;
+		transform:         none;
+	}
+	.main-navigation .menu-item-has-children .dashicons {
+		background: rgba(255, 255, 255, .05);
+		height: 32px;
+		position: absolute;
+		right: 8px;
+		top: 8px;
+		width: 32px;
+		line-height: 32px;
+		border-radius: 3px;
+		cursor: pointer;
+		z-index: 999;
+	}
+	.main-navigation .menu-item-has-children.active > .dashicons.dashicons-arrow-down:before {
+		content: "\f142";
+	}
+	.main-navigation li:hover > .sub-menu {
+		opacity: 0;
+		visibility: hidden;
+	}
+	.main-navigation .menu-item-has-children.active > .sub-menu {
+		position: inherit;
+		opacity: 1;
+		visibility: visible;
+	}
+	.main-navigation #menu-main .sub-menu li:last-child {
+		border: 0;
+	}
+}
+@media only screen and (max-width: 768px), (max-device-width: 768px) {
+	.top-navigation,
+	.site-network,
+	.site-main,
+	.primary-sidebar,
+	.secondary-sidebar,
+	.content3col .site-main,
+	.content3col .primary-sidebar,
+	.content3col .secondary-sidebar,
+	.grid .columns {
+		width: 100%;
+	}
+	.top-navigation,
+	.site-network .social {
+		text-align: center;
+		margin: 5px 0;
+	}
+	.search-box {
+		display: none;
+	}
+	#page {
+		max-width: 750px;
+	}
+	.site-main {
+		margin-bottom: 40px !important;
+	}
+	.content-right .primary-sidebar,
+	.left-content-right .primary-sidebar,
+	.left-content-right .site-main,
+	.left-content-right .secondary-sidebar,
+	.content-left-right .secondary-sidebar,
+	.content-left-right .primary-sidebar,
+	.left-content .secondary-sidebar,
+	.left-right-content .secondary-sidebar,
+	.site-main .page {
+		margin: 0;
+	}
+	.grid .columns {
+		margin-right: 0;
+	}
+}
+@media only screen and (max-width: 480px), (max-device-width: 480px) {
+	.comment-respond .comment-form .comment-form-author,
+	.comment-respond .comment-form .comment-form-email,
+	.comment-respond .comment-form .comment-form-url {
+		width: 100%;
+		margin: 0 0 20px;
+	}
+	#page {
+		margin-bottom: 0;
+	}
+	.site-footer {
+		padding: 30px 20px;
+	}
+}
